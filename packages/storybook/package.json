@@ -1,6 +1,7 @@
 {
 	"name": "storybook",
 	"version": "1.0.1",
+	"private": "true",
 	"description": "> TODO: description",
 	"homepage": "https://github.com/bazo/js-kit#readme",
 	"bugs": {

@@ -16,5 +16,6 @@
 	"publishConfig": {
 		"access": "public",
 		"allow-same-version": true
-	}
+	},
+	"gitHead": "0a8cb1507885fed56ec92948d2a6008acd9817d8"
 }

@@ -30,5 +30,5 @@ module.exports = {
 		"no-console": "warn",
 		"no-undef": "off",
 	},
-	ignorePatterns: ["dist/**/*"],
+	ignorePatterns: ["dist/**/*", "dist"],
 };

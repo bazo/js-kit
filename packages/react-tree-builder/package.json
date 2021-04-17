@@ -4,6 +4,7 @@
 	"license": "MIT",
 	"main": "src/index.ts",
 	"scripts": {
+		"build": "tsc",
 		"prepack": "yarn ts-node-script prepack.ts"
 	},
 	"devDependencies": {

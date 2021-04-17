@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 type NodeID = string | number | null;
 
 export interface NodeData {
@@ -18,13 +19,12 @@ export class TreeNode<T extends NodeData = NodeData> {
 	private _id: NodeID;
 	private _parent: TreeNode<T> | null = null;
 	private _data?: T | undefined;
-	private _children: TreeNode<T>[];
+	private _children: TreeNode<T>[] = [];
 	private _tree: Tree<T> = (null as unknown) as Tree<T>;
 
 	constructor(id: TreeNode<T>["_id"], data?: TreeNode<T>["_data"]) {
 		this._id = id;
 		this._data = data;
-		this._children = [];
 	}
 
 	public get id(): TreeNode<T>["_id"] {
@@ -70,10 +70,19 @@ export class TreeNode<T extends NodeData = NodeData> {
 	}
 }
 
-export function treeArrayToTreeNode<T extends NodeData = NodeData>(data?: TreeArray<T>): TreeNode<T> {
-	const root = new TreeNode<T>(null);
+export function treeArrayToTreeNode<T extends NodeData = NodeData>(parent: TreeNode<T>, children?: TreeArray<T>): void {
+	if (!children) {
+		return;
+	}
 
-	return root;
+	for (const child of children) {
+		const data = (Object.fromEntries(Object.entries(child).filter(([key]) => key !== "children")) as unknown) as T;
+
+		const node = new TreeNode<T>(child.id, data);
+		parent.addChild(node);
+
+		treeArrayToTreeNode(node, child["children"]);
+	}
 }
 
 export class Tree<T extends NodeData = NodeData> {
@@ -84,6 +93,7 @@ export class Tree<T extends NodeData = NodeData> {
 	constructor(data?: TreeArray<T>) {
 		this._root = new TreeNode<T>(null);
 		this._root.tree = this;
+		treeArrayToTreeNode(this._root, data);
 	}
 
 	public get root(): TreeNode<T> {

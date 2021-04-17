@@ -34,10 +34,41 @@ const data: Data[] = [
 		id: 3,
 		name: "toys",
 	},
+	{
+		id: 4,
+		name: "pelechy",
+	},
+	{
+		id: 5,
+		name: "kukane",
+	},
+	{
+		id: 6,
+		name: "automatic",
+	},
+	{
+		id: 7,
+		name: "wooden",
+	},
 ];
 
 const treeData: TreeArray<Data> = [
-	{ id: 1, name: "beds", children: [] },
+	{
+		id: 1,
+		name: "beds",
+		children: [
+			{
+				id: 4,
+				name: "pelechy",
+				children: [],
+			},
+			{
+				id: 5,
+				name: "kukane",
+				children: [],
+			},
+		],
+	},
 	{ id: 2, name: "bowls", children: [{ id: 3, name: "toys", children: [] }] },
 ];
 

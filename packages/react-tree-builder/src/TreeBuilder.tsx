@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import "./treeBuilder.css";
-
 import { DragEvent, useMemo, useRef, useState, VFC } from "react";
 
 import { NodeData, Tree, TreeArray, TreeNode } from "./Tree";

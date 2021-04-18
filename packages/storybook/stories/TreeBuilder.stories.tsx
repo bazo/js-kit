@@ -1,3 +1,4 @@
+import "@bazo/react-tree-builder/src/treeBuilder.css";
 import "./treeBuilderStory.css";
 
 import { EditorFactory, TreeArray, TreeBuilder, TreeBuilderProps, TreeNode } from "@bazo/react-tree-builder";
